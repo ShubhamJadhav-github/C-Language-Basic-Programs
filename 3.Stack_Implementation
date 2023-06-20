@@ -1,0 +1,110 @@
+// C Program For Stack Implementation using Dynamic Memory Allocation....
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int *stack,n,top=-1;
+
+void push()
+{
+	if(top>=n-1)
+		printf("\nStack Overflow !!!");
+	else
+	{
+		printf("Enter an element: ");
+		scanf("%d",&stack[top+1]);
+		top++;
+	}
+}
+
+void pop()
+{
+	if(top==-1)
+		printf("\nStack is Empty !!!");
+	else
+		printf("\nElement no. %d i.e. %d is popped out of stack",top,stack[top]);
+		top--;
+}
+
+void peek()
+{
+	if(top==-1)
+		printf("\nStack is Empty !!!");
+	else
+		printf("Peek Element = %d",stack[top]);
+}
+
+void isEmpty()
+{
+	if(top==-1)
+		printf("\nYes !!! Stack is Empty....");
+	else
+		printf("\nNo !!! Stack is Not Empty....");
+}
+
+void isFull()
+{
+	if(top>=n-1)
+		printf("\nYes !!! Stack is Full....");
+	else
+		printf("\nNo !!! Stack is Not Full....");
+}
+
+void display()
+{
+	if(top==-1)
+		printf("\nStack is Empty....");
+	else
+	{
+		for(int i=top;i>=0;i--)
+		{
+			printf("\nStack[%d] = %d",i,stack[i]);
+		}
+	}
+}
+
+int main()
+{
+	int choice;
+
+	printf("\nEnter the size of the stack: ");
+	scanf("%d",&n);
+
+	stack = (int *)malloc(sizeof(int)*n);
+  
+	while(1)
+	{
+  
+		printf("\n\n:::::Menu:::::\n1. Push\n2. Pop\n3. Peek\n4. isEmpty\n5. isFull\n6. Display\n7. Exit\nEnter Your Choice: ");
+		scanf("%d",&choice);
+    
+		switch (choice)
+		{
+			case 1:
+				push();
+				break;
+			case 2:
+				pop();
+				break;
+			case 3:
+				peek();
+				break;
+			case 4:
+				isEmpty();
+				break;
+			case 5:
+				isFull();
+				break;
+			case 6:
+				display();
+				break;
+			case 7:
+				exit(0);
+				break;
+			default:
+				printf("\nInvalid Choice!!! \nPlease Try Again....\n\n");
+				break;
+		}
+	}
+	return 0;
+}
